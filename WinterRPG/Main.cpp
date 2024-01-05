@@ -1,5 +1,4 @@
 #include "Common.h"
-
 #include "GameInstance.h"
 
 int main()
