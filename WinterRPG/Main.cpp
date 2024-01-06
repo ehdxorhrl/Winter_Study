@@ -11,7 +11,7 @@ int main()
 	{
 		Instance->Update();
 		Instance->Render();
-		Sleep(1000);
+		Sleep(100);
 
 		if (Instance->IsNeedDestroy()) break;
 	}

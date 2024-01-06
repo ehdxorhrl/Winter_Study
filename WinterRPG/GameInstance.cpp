@@ -19,18 +19,29 @@ CGameInstance::~CGameInstance()
 void CGameInstance::Init()
 {
 	std::cout << "Init CGameInstance" << std::endl;
-	
 }
 
 void CGameInstance::Update()
 {
 	std::cout << "Update CGameInstance" << std::endl;
 
-	int input = _kbhit();
 	key = 0;
-	if (input)
+	if (_kbhit())
 	{
 		key = _getch();
+		switch (key)
+		{
+		case 224:
+			key = _getch();
+			if (key == LEFT || key == RIGHT || key == UP || key == DOWN)
+			{
+				player.MoveTo_Player(key);
+			};
+			break;
+		case space:
+			player.attack = true;
+			break;
+		}
 	}
 	cout << key << endl;
 }
