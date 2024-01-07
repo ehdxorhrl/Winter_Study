@@ -11,7 +11,7 @@ int main()
 	{
 		Instance->Update();
 		Instance->Render();
-		Sleep(100);
+		Sleep(200);
 
 		if (Instance->IsNeedDestroy()) break;
 	}
@@ -23,3 +23,4 @@ int main()
 
 	return 0;
 }
+

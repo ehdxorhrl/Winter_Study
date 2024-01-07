@@ -5,7 +5,6 @@ void Player::Render()
 {
 	gotoxy(x * 2, y);
 	std::cout << "▣";
-	IsAttack();
 }
 
 void Player::IsAttack()
@@ -23,46 +22,46 @@ void Player::MoveTo_Player(int num)
 	switch (num)
 	{
 	case LEFT:
-		if (x > 0)
+		if (x > 1)
 		{
 			x -= 1;
-			ax = x - 1;
-			ay = y;
 		}
+		ax = x - 1;
+		ay = y;
 		break;
 	case RIGHT:
-		if (x < BoardX - 1)
+		if (x < BoardX - 2)
 		{
 			x += 1;
-			ax = x + 1;
-			ay = y;
 		}
+		ax = x + 1;
+		ay = y;
 		break;
 	case UP:
-		if (y > 0)
+		if (y > 1)
 		{
 			y -= 1;
-			ay = y - 1;
-			ax = x;
 		}
+		ay = y - 1;
+		ax = x;
 		break;
 	case DOWN:
-		if (y < BoardY - 1)
+		if (y < BoardY - 2)
 		{
 			y += 1;
-			ay = y + 1;
-			ax = x;
 		}
+		ay = y + 1;
+		ax = x;
 		break;
 	}
 }
 
 Player::Player()
 {
-	x = 5; //일단 고정
-	y = 5;
-	ax = 6; //오른쪽 바라봄
-	ay = 5;
+	x = 1; //일단 고정
+	y = 1;
+	ax = 2; //오른쪽 바라봄
+	ay = 1;
 	attack = false;
 }
 

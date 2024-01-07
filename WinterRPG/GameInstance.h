@@ -1,10 +1,16 @@
 #pragma once
 
 const int Key_ESC = 27;
-const int space = 32;
+const int Key_ENTER = 13;
+const int Key_SP = 32;
 
 class CGameInstance
 {
+	enum STATE
+	{
+		Ingame = 0,
+		Pause
+	};
 public:
 	CGameInstance();
 	~CGameInstance();
@@ -20,5 +26,6 @@ public:
 
 private:
 	int key = 0;
+	int state = Ingame;
 };
 
