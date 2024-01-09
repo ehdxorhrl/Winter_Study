@@ -19,5 +19,6 @@ public:
 	void Render();
 	void IsAttack();
 	void MoveTo_Player(int num);
+	void reset();
 };
 

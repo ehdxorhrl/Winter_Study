@@ -56,6 +56,15 @@ void Player::MoveTo_Player(int num)
 	}
 }
 
+void Player::reset()
+{
+	x = 1; //일단 고정
+	y = 1;
+	ax = 2; //오른쪽 바라봄
+	ay = 1;
+	attack = false;
+}
+
 Player::Player()
 {
 	x = 1; //일단 고정

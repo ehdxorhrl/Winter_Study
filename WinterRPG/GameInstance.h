@@ -11,6 +11,7 @@ class CGameInstance
 		Ingame = 0,
 		Pause
 	};
+
 public:
 	CGameInstance();
 	~CGameInstance();
@@ -20,9 +21,8 @@ public:
 	void Update();
 	void Render();
 	void Destroy();
-
+	void View_time();
 	bool IsNeedDestroy() { return key == Key_ESC; };
-
 
 private:
 	int key = 0;

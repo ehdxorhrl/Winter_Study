@@ -3,10 +3,12 @@
 #include "Player.h"
 #include "Board.h"
 #include "Monster.h"
+#include <random>
 
 Board board;
 Player player;
 Monster monster;
+time_t start_time;
 
 CGameInstance::CGameInstance()
 {
@@ -20,7 +22,7 @@ CGameInstance::~CGameInstance()
 
 void CGameInstance::Init()
 {
-	std::cout << "Init CGameInstance" << std::endl;
+	time(&start_time);
 }
 
 void CGameInstance::Update()
@@ -44,12 +46,20 @@ void CGameInstance::Update()
 				break;
 			case Key_SP:
 				player.attack = true;
+				monster.Check_Range(player.ax, player.ay);
 				break;
 			case 'p':
 			case 'P':
 				state = Pause;
 				break;
+			case 'r':
+			case 'R':
+				monster.Create();
+				player.reset();
+				break;
 			}
+			monster.MoveTo_Player(player.x, player.y, monster.speed);
+			
 		}
 		else if (state == Pause)
 		{
@@ -81,11 +91,13 @@ void CGameInstance::Render()
 		monster.Render();
 		player.IsAttack();
 		board.ReturnCaret();
+		cout << endl;
+		View_time();
 	}
 	else if (state == Pause)
 	{
 		system("cls");
-		cout << "계속하기를 원하기면 ENTER를 눌러주세요";
+		cout << "계속하기를 원하기면 ENTER를 눌러주세요" << endl;
 	}
 }
 
@@ -93,3 +105,12 @@ void CGameInstance::Destroy()
 {
 	std::cout << "Destroy CGameInstance" << std::endl;
 }
+
+void CGameInstance::View_time()
+{
+	time_t current_time;
+	time(&current_time);
+	cout << "플레이시간: " << current_time - start_time;
+}
+
+// system("cls") -> 더블 버퍼링으로 변경할것
